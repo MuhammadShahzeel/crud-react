@@ -4,8 +4,15 @@ const api = axios.create({
 
 });
 
+//to get data
 export const getPosts =  () => {
    return api.get("/posts");
 
 }
+
+//to delete data
+export const deletePost = (id) => {
+    return api.delete(`/posts/${id}`);
+}
+
 

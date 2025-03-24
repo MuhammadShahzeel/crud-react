@@ -6,9 +6,9 @@ const App = () => {
 
   
   return (
-    <>
+    <section>
     <Posts/>
-    </>
+    </section>
 
   )
 }
