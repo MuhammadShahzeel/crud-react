@@ -1,1 +1,1 @@
-practice project to perform CRUD operations through
+practice project to perform CRUD operations through JSONplaceholder Api
