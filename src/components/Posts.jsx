@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { getPosts, deletePost } from "../api/PostApi";
 import Form from "./Form";
-import { addPost } from "../api/PostApi";
+
 
 const Posts = () => {
   const [data, setData] = useState([]);
+  const [updateDataApi, setUpdateDataApi] = useState({});
 
   const getPostData = async () => {
     const response = await getPosts();
@@ -30,13 +31,22 @@ const Posts = () => {
     }
   };
 
+  const handleUpdatePost=(currdata) => {
+    setUpdateDataApi(currdata)
+   }
+
   return (
     <>
    
       
    
     <section className="bg-gray-900 min-h-screen py-8">
-    <Form data={data} setData={setData}/>
+    <Form data={data} setData={setData}
+      updateDataApi={updateDataApi} setUpdateDataApi={setUpdateDataApi}
+    
+    
+    
+    />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.map((currdata) => {
@@ -59,6 +69,9 @@ const Posts = () => {
 
                   <div className="flex space-x-4">
                     <button
+                      onClick={() => {
+                        handleUpdatePost(currdata);
+                      }}
                       className="px-4 py-2 bg-indigo-600 text-white rounded-lg 
                                hover:bg-indigo-700 transition-colors duration-200 
                                focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50
